@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container py-5">
+      <h1 style="text-align:center">{{ title }}</h1>
+      <a href="{% url 'posts:group_new_url' %}">Return create form</a>
+      <br>
+      <form action="{% url 'posts:group_edit_url' group.pk %}" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="form-group">
+
+              {% if field.errors %}
+                  <div class="alert alert-danger">
+                      {{ field.errors }}
+                  </div>
+              {% endif %}
+              {{ field.label }}
+              {{ field }}
+          </div>
+          {% endfor %}
+          <br>
+          <button type="submit" class="btn btn-primary">Edit group</button>
+      </form>
+  </div>
+{% endblock %}
