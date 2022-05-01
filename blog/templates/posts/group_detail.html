@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container py-5">
+        <h1 style="text-align:center">{{ title }}</h1>
+        <a href="{% url 'posts:group_new_url' %}">Return to create form</a>
+        <br>
+        <dl class="row">
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">{{ group.title }}</dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">{{ group.description }}</dd>
+
+            <dt class="col-sm-3">Slug</dt>
+            <dd class="col-sm-9">{{ group.slug }}</dd>
+        </dl>
+        <br>
+        <a type="button button-primary" href="{% url 'posts:group_edit_url' group.pk %}">Edit Group</a>
+    </div>
+{% endblock %}
